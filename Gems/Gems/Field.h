@@ -9,9 +9,14 @@ class Field {
 private:
     std::vector <std::vector <Gem>> gemsMatrix; //matrix of all gem objects on the screen
     std::array <sf::Color, 6> colorsSpectre = { sf::Color::Green, sf::Color::Blue, sf::Color::Red, sf::Color::Yellow, sf::Color::Cyan, sf::Color::Magenta };    //possible colors array
-    unsigned width, height; //size of field taken from current window's size
+    float width, height; //size of field taken from current window's size
     unsigned gemsInRow, gemsInColumn;   //amount of gems on the playfield
 public:
-    //field constructor depending on current window and field's sizes; by default field is 10x10
-    Field(sf::RenderWindow window, unsigned gemsInRow, unsigned gemsInColumn);
+    //field constructor depending on current window's sizes and field's sizes; by default field is 10x10
+    Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned gemsInColumn);
+
+    std::vector<std::vector<Gem>> GetGemsMatrix(void);  //not sure how much do I really need this function
+
+    //Drawing full playfield depending on gems matrix
+    void DrawField(sf::RenderWindow *window);
 };

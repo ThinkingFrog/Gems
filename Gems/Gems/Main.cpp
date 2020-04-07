@@ -2,8 +2,16 @@
 
 int main(void) {
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Test");
-    sf::CircleShape shape(100.f);
+    srand((unsigned)time(0));   //random gems' colors generation
+
+    unsigned fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
+    unsigned userResolutionWidth = 1080, userResolutionHeight = 720;    //Window resolution
+
+    sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
+
+    float windowWidth = (float)window.getSize().x, windowwHeight = (float)window.getSize().y;
+
+    Field field(windowWidth, windowwHeight, fieldWidth, fieldHeight);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -13,7 +21,10 @@ int main(void) {
         }
 
         window.clear();
-        window.draw(shape);
+
+        //drawing full field
+        field.DrawField(&window);
+
         window.display();
     }
 
