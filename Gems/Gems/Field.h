@@ -19,4 +19,8 @@ public:
 
     //Drawing full playfield depending on gems matrix
     void DrawField(sf::RenderWindow *window);
+    bool CheckFieldForMatching(void);
+    void FieldDeletion(std::vector <std::array <unsigned, 2>> matching);
+    void CheckMatch(unsigned i, unsigned j);
+    void FieldDrop(void);
 };

@@ -22,8 +22,12 @@ int main(void) {
 
         window.clear();
 
-        //drawing full field
+        //drawing field
         field.DrawField(&window);
+        field.CheckFieldForMatching();
+        field.FieldDrop();
+        sf::Clock timer;
+        while (timer.getElapsedTime().asSeconds() < 0.25);
 
         window.display();
     }

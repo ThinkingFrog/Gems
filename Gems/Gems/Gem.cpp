@@ -7,6 +7,24 @@ Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
     color = newColor;
 }
 
+sf::Color Gem::GetColor(void) {
+    return color;
+}
+
+void Gem::SetEmpty(void) {
+    color = sf::Color::Black;
+}
+
+void Gem::SetColor(sf::Color newColor) {
+    color = newColor;
+}
+
+bool Gem::IsEmpty(void) {
+    if (color == sf::Color::Black)
+        return true;
+    return false;
+}
+
 //function returns an SFML drawable shape to be drawn via window.draw()
 void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
     sf::RectangleShape shape(sf::Vector2f(width, height));
