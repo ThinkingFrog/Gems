@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "Field.h"
 
 //global vector of matching gems, refreshed each time for a new combination
@@ -90,4 +91,10 @@ void Field::FieldDrop(void) {
                 gemsMatrix[i + 1][j].SetColor(gemsMatrix[i][j].GetColor());
                 gemsMatrix[i][j].SetEmpty();
             }
+}
+
+void Field::FieldRefill(void) {
+    for (unsigned i = 0; i < gemsInRow; i++)
+        if (gemsMatrix[0][i].IsEmpty())
+            gemsMatrix[0][i].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
 }

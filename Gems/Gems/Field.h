@@ -23,4 +23,5 @@ public:
     void FieldDeletion(std::vector <std::array <unsigned, 2>> matching);
     void CheckMatch(unsigned i, unsigned j);
     void FieldDrop(void);
+    void FieldRefill(void);
 };

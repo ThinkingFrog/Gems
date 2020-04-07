@@ -4,7 +4,7 @@ int main(void) {
 
     srand((unsigned)time(0));   //random gems' colors generation
 
-    unsigned fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
+    unsigned fieldWidth = 50, fieldHeight = 50; //Amount of gems in row and in column
     unsigned userResolutionWidth = 1080, userResolutionHeight = 720;    //Window resolution
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
@@ -26,8 +26,9 @@ int main(void) {
         field.DrawField(&window);
         field.CheckFieldForMatching();
         field.FieldDrop();
-        sf::Clock timer;
-        while (timer.getElapsedTime().asSeconds() < 0.25);
+        field.FieldRefill();
+        //sf::Clock timer;
+        //while (timer.getElapsedTime().asSeconds() < 0.25);
 
         window.display();
     }
