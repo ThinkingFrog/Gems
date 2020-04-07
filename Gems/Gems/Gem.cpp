@@ -1,8 +1,8 @@
 #include "Gem.h"
-#include <cstdlib>
 
-Gem::Gem(sf::RenderWindow window) {
-    width = window.getSize().x / 10;
-    height = window.getSize().y / 10;
-    color = possibleColors[rand() % possibleColors.size()];
+//all parametrs are being evaluated in Field class constructor or any other additional Field class method
+Gem::Gem(unsigned newWidth, unsigned newHeight, sf::Color newColor) {
+    width = newWidth;
+    height = newHeight;
+    color = newColor;
 }

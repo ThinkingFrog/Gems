@@ -1,14 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <array>
 
+//Main class for all objects on the game field
+//Has sizes and color of each object
 class Gem {
 private:
-    unsigned width, height;
-    std::array <sf::Color, 3> possibleColors = { sf::Color::Green, sf::Color::Blue, sf::Color::Red };
-    sf::Color color;
+    unsigned width, height; //gem's individual sizes
+    sf::Color color;    //gem's individual color decided from field's color spectre
 
 public:
-    Gem(sf::RenderWindow window);
+    Gem(unsigned width, unsigned height, sf::Color color);
 };
 
