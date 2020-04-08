@@ -26,11 +26,11 @@ bool Gem::IsEmpty(void) {
 }
 
 //function returns an SFML drawable shape to be drawn via window.draw()
-void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
+void Gem::DrawGem(sf::RenderWindow *window, float x, float y, sf::Color outline) {
     sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setFillColor(color);
     shape.setPosition(x, y);
     shape.setOutlineThickness((width + height) / 2 * 0.1);
-    shape.setOutlineColor(sf::Color::Black);
+    shape.setOutlineColor(outline);
     (*window).draw(shape);
 }

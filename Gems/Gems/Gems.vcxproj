@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="FieldMain.cpp" />
     <ClCompile Include="Gem.cpp" />
     <ClCompile Include="Main.cpp" />

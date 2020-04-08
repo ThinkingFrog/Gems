@@ -24,4 +24,6 @@ public:
     void CheckMatch(unsigned i, unsigned j);
     void FieldDrop(void);
     void FieldRefill(void);
+    void SetHighlited(unsigned x, unsigned y);
+    void SetHighlited(sf::RenderWindow* window, unsigned x, unsigned y);
 };

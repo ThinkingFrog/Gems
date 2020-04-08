@@ -20,6 +20,6 @@ public:
     bool IsEmpty(void);
 
     //Draw single gem in (x,y) coordinates
-    void DrawGem(sf::RenderWindow *window, float x, float y);
+    void DrawGem(sf::RenderWindow* window, float x, float y, sf::Color outline = sf::Color::Black);
 };
 
