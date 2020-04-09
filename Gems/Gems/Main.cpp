@@ -6,8 +6,8 @@ int main(void) {
 
     //bool wait = false;
 
-    unsigned fieldWidth = 5, fieldHeight = 5; //Amount of gems in row and in column
-    unsigned userResolutionWidth = 1080, userResolutionHeight = 720;    //Window resolution
+    unsigned fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
+    unsigned userResolutionWidth = 800, userResolutionHeight = 600;    //Window resolution
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
 

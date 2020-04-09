@@ -5,6 +5,7 @@
 //Has sizes and color of each object
 class Gem {
 private:
+
     float width, height; //gem's individual sizes
     sf::Color color;    //gem's individual color decided from field's color spectre
 
@@ -22,4 +23,3 @@ public:
     //Draw single gem in (x,y) coordinates
     void DrawGem(sf::RenderWindow* window, float x, float y, sf::Color outline = sf::Color::Black);
 };
-

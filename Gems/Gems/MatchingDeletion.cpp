@@ -32,7 +32,7 @@ bool Field::CheckFieldForMatching(void) {
 //Deleting all gems in given vector
 void Field::FieldDeletion(std::vector <std::array <unsigned, 2>> matching) {
     for (unsigned k = 0; k < matching.size(); k++) {
-        gemsMatrix[matching[k][0]][matching[k][1]].SetEmpty();
+        gemsMatrix[matching[k][1]][matching[k][0]].SetEmpty();
     }
 }
 
