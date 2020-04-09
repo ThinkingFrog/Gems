@@ -26,4 +26,5 @@ public:
     void FieldRefill(void);
     void SetHighlited(unsigned x, unsigned y);
     void SetHighlited(sf::RenderWindow* window, unsigned x, unsigned y);
+    void Swap(unsigned x1, unsigned y1, unsigned x2, unsigned y2);
 };

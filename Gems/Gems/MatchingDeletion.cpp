@@ -9,8 +9,8 @@ bool Field::CheckFieldForMatching(void) {
     matching.clear();
     bool found = false;
 
-    for (unsigned i = 0; i < gemsInColumn; i++) {
-        for (unsigned j = 0; j < gemsInRow; j++) {
+    for (unsigned j = 0; j < gemsInColumn; j++) {
+        for (unsigned i = 0; i < gemsInRow; i++) {
             matching.push_back({ i, j });
             CheckMatch(i, j);
             if (matching.size() >= 3)
@@ -48,12 +48,12 @@ bool AlreadyMatched(unsigned i, unsigned j) {
 void Field::CheckMatch(unsigned i, unsigned j) {
 
     //if gem already empty - skip it
-    if (gemsMatrix[i][j].IsEmpty())
+    if (gemsMatrix[j][i].IsEmpty())
         return;
 
     //Checking upper element
     if (j != 0)
-        if (gemsMatrix[i][j].GetColor() == gemsMatrix[i][j - 1].GetColor())
+        if (gemsMatrix[j][i].GetColor() == gemsMatrix[j - 1][i].GetColor())
             if (!AlreadyMatched(i, j - 1)) {
                 matching.push_back({ i, j - 1 });
                 CheckMatch(i, j - 1);
@@ -61,7 +61,7 @@ void Field::CheckMatch(unsigned i, unsigned j) {
 
     //Checking right element
     if (i != gemsInRow - 1)
-        if (gemsMatrix[i][j].GetColor() == gemsMatrix[i + 1][j].GetColor())
+        if (gemsMatrix[j][i].GetColor() == gemsMatrix[j][i + 1].GetColor())
             if (!AlreadyMatched(i + 1, j)) {
                 matching.push_back({ i + 1, j });
                 CheckMatch(i + 1, j);
@@ -69,7 +69,7 @@ void Field::CheckMatch(unsigned i, unsigned j) {
 
     //Checking bottom element
     if (j != gemsInColumn - 1)
-        if (gemsMatrix[i][j].GetColor() == gemsMatrix[i][j + 1].GetColor())
+        if (gemsMatrix[j][i].GetColor() == gemsMatrix[j + 1][i].GetColor())
             if (!AlreadyMatched(i, j + 1)) {
                 matching.push_back({ i, j + 1 });
                 CheckMatch(i, j + 1);
@@ -77,7 +77,7 @@ void Field::CheckMatch(unsigned i, unsigned j) {
 
     //Checking left element
     if (i != 0)
-        if (gemsMatrix[i][j].GetColor() == gemsMatrix[i - 1][j].GetColor())
+        if (gemsMatrix[j][i].GetColor() == gemsMatrix[j][i - 1].GetColor())
             if (!AlreadyMatched(i - 1, j)) {
                 matching.push_back({ i - 1, j });
                 CheckMatch(i - 1, j);
@@ -85,11 +85,11 @@ void Field::CheckMatch(unsigned i, unsigned j) {
 }
 
 void Field::FieldDrop(void) {
-    for (unsigned i = 0; i < gemsInColumn - 1; i++)
-        for (unsigned j = 0; j < gemsInRow; j++)
-            if (gemsMatrix[i + 1][j].IsEmpty()) {
-                gemsMatrix[i + 1][j].SetColor(gemsMatrix[i][j].GetColor());
-                gemsMatrix[i][j].SetEmpty();
+    for (unsigned j = 0; j < gemsInColumn - 1; j++)
+        for (unsigned i = 0; i < gemsInRow; i++)
+            if (gemsMatrix[j + 1][i].IsEmpty()) {
+                gemsMatrix[j + 1][i].SetColor(gemsMatrix[j][i].GetColor());
+                gemsMatrix[j][i].SetEmpty();
             }
 }
 
