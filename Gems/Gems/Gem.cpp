@@ -30,7 +30,7 @@ void Gem::DrawGem(sf::RenderWindow *window, float x, float y, sf::Color outline)
     sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setFillColor(color);
     shape.setPosition(x, y);
-    shape.setOutlineThickness(-(width + height) / 2 * 0.1);
+    shape.setOutlineThickness(-(width + height) / 2 * 0.075);
     shape.setOutlineColor(outline);
     (*window).draw(shape);
 }

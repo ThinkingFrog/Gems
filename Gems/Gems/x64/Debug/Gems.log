@@ -1,2 +1,3 @@
-﻿  Main.cpp
-  Gems.vcxproj -> C:\Users\HP\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe
+﻿  Gem.cpp
+C:\Documents\GitHub\Gems\Gems\Gems\Gem.cpp(33,53): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Gems.vcxproj -> C:\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe
