@@ -8,6 +8,7 @@ private:
 
     float width, height; //gem's individual sizes
     sf::Color color;    //gem's individual color decided from field's color spectre
+    sf::Color outline;
 
 public:
     Gem(float width, float height, sf::Color color);
@@ -18,8 +19,10 @@ public:
 
     void SetColor(sf::Color newColor);
 
+    void SetOutlineColor(sf::Color newOutline);
+
     bool IsEmpty(void);
 
     //Draw single gem in (x,y) coordinates
-    void DrawGem(sf::RenderWindow* window, float x, float y, sf::Color outline = sf::Color::Black);
+    void DrawGem(sf::RenderWindow* window, float x, float y);
 };
