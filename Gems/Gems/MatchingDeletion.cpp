@@ -5,7 +5,7 @@
 std::vector <std::array <unsigned, 2>> matching;
 
 //Major function that runs all deletion of 3+ matching gems
-bool Field::CheckFieldForMatching(void) {
+void Field::CheckFieldForMatching(void) {
     matching.clear();
     bool found = false;
 
@@ -26,7 +26,6 @@ bool Field::CheckFieldForMatching(void) {
     }
 
     FieldDeletion(matching);
-    return found;
 }
 
 //Deleting all gems in given vector
@@ -84,17 +83,21 @@ void Field::CheckMatch(unsigned i, unsigned j) {
             }
 }
 
-void Field::FieldDrop(void) {
+bool Field::FieldDrop(void) {
+    bool dropped = false;
     for (unsigned j = 0; j < gemsInColumn - 1; j++)
         for (unsigned i = 0; i < gemsInRow; i++)
-            if (gemsMatrix[j + 1][i].IsEmpty()) {
+            if (!gemsMatrix[j][i].IsEmpty() && gemsMatrix[j + 1][i].IsEmpty()) {
                 gemsMatrix[j + 1][i].SetColor(gemsMatrix[j][i].GetColor());
                 gemsMatrix[j][i].SetEmpty();
+                dropped = true;
             }
+    return dropped;
 }
 
 void Field::FieldRefill(void) {
-    for (unsigned i = 0; i < gemsInRow; i++)
-        if (gemsMatrix[0][i].IsEmpty())
-            gemsMatrix[0][i].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
+    for (unsigned j = 0; j < gemsInColumn; j++)
+        for (unsigned i = 0; i < gemsInRow; i++)
+            if (gemsMatrix[j][i].IsEmpty())
+                gemsMatrix[j][i].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
 }

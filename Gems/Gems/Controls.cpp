@@ -1,7 +1,8 @@
 #include "Field.h"
 
 void Field::SetHighlighted(unsigned x, unsigned y) {
-    gemsMatrix[y][x].SetOutlineColor(sf::Color::Yellow);
+    if (!gemsMatrix[y][x].IsEmpty())
+        gemsMatrix[y][x].SetOutlineColor(sf::Color::Yellow);
 }
 
 void Field::RemoveHighlight(unsigned x, unsigned y) {

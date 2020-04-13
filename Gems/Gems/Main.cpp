@@ -4,18 +4,17 @@ int main(void) {
 
     srand((unsigned)time(0));   //random gems' colors generation
 
-    bool wait = false;
+    bool secondClick = false;
+    bool dropped = false;
+
+    unsigned gem1X = 0, gem1Y = 0, gem2X = 0, gem2Y = 0;
 
     unsigned fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
     unsigned userResolutionWidth = 800, userResolutionHeight = 600;    //Window resolution
 
-    unsigned gem1X, gem1Y, gem2X, gem2Y;
-
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
 
-    float windowWidth = (float)window.getSize().x, windowHeight = (float)window.getSize().y;
-
-    Field field(windowWidth, windowHeight, fieldWidth, fieldHeight);
+    Field field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight);
 
     while (window.isOpen()) {
 
@@ -23,52 +22,53 @@ int main(void) {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
-            //  if (event.type == sf::Event::KeyPressed)
-              //    wait = false;
         }
 
         window.clear();
 
         //drawing field
-        field.CheckFieldForMatching();
-        field.FieldDrop();
-        field.FieldRefill();
+        if (dropped == false)
+            field.CheckFieldForMatching();
+        dropped = field.FieldDrop();
+        if (dropped == false)
+            field.FieldRefill();
 
-        if (wait == true) {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+        //swap controls
+        if (dropped == false)
+            if (secondClick == false) {
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-                sf::Vector2i localPosition2 = sf::Mouse::getPosition(window);
-                float mouse2X = (float)localPosition2.x;
-                float mouse2Y = (float)localPosition2.y;
-                gem2X = (unsigned)(mouse2X / (windowWidth / fieldWidth));
-                gem2Y = (unsigned)(mouse2Y / (windowHeight / fieldHeight));
-                field.Swap(gem1X, gem1Y, gem2X, gem2Y);
-                field.RemoveHighlight(gem1X, gem1Y);
-                wait = false;
+                    sf::Vector2i localPosition1 = sf::Mouse::getPosition(window);
+                    float mouse1X = (float)localPosition1.x;
+                    float mouse1Y = (float)localPosition1.y;
+                    gem1X = (unsigned)(mouse1X / (float)(userResolutionWidth / fieldWidth));
+                    gem1Y = (unsigned)(mouse1Y / (float)(userResolutionHeight / fieldHeight));
+                    field.SetHighlighted(gem1X, gem1Y);
+                    secondClick = true;
+                }
             }
-        }
+            else
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-        if (wait == false) {
-            //Swap controls
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
-                sf::Vector2i localPosition1 = sf::Mouse::getPosition(window);
-                float mouse1X = (float)localPosition1.x;
-                float mouse1Y = (float)localPosition1.y;
-                gem1X = (unsigned)(mouse1X / (windowWidth / fieldWidth));
-                gem1Y = (unsigned)(mouse1Y / (windowHeight / fieldHeight));
-                field.SetHighlighted(gem1X, gem1Y);
-                wait = true;
-            }
-        }
+                    sf::Vector2i localPosition2 = sf::Mouse::getPosition(window);
+                    float mouse2X = (float)localPosition2.x;
+                    float mouse2Y = (float)localPosition2.y;
+                    gem2X = (unsigned)(mouse2X / (float)(userResolutionWidth / fieldWidth));
+                    gem2Y = (unsigned)(mouse2Y / (float)(userResolutionHeight / fieldHeight));
+                    if (abs((int)gem2X - (int)gem1X) <= 1 && abs((int)gem2Y - (int)gem1Y) <= 1 && !(abs((int)gem2X - (int)gem1X) == 1 && abs((int)gem2Y - (int)gem1Y) == 1)) {
+                        field.Swap(gem1X, gem1Y, gem2X, gem2Y);
+                        field.RemoveHighlight(gem1X, gem1Y);
+                        secondClick = false;
+                    }
+                }
 
         field.DrawField(&window);
+
+        window.display();
 
         //Time between frames
         sf::Clock timer;
         while (timer.getElapsedTime().asSeconds() < 0.25);
-
-        window.display();
     }
 
     return 0;
