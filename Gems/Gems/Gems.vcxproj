@@ -150,7 +150,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Controls.cpp" />
+    <ClCompile Include="Help.cpp" />
+    <ClCompile Include="Setup.cpp" />
+    <ClCompile Include="SwapControls.cpp" />
     <ClCompile Include="FieldMain.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Gem.cpp" />
