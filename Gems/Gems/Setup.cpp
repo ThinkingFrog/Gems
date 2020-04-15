@@ -23,6 +23,4 @@ void Setup(void) {
         std::cin >> fieldWidth >> fieldHeight;
         break;
     }
-
-    
 }
