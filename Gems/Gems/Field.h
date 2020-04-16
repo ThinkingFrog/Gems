@@ -15,10 +15,10 @@ public:
     //field constructor depending on current window's sizes and field's sizes; by default field is 10x10
     Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned gemsInColumn);
 
+    void GenerateField(void);
+
     //Drawing full playfield depending on gems matrix
     void DrawField(sf::RenderWindow *window);
-    unsigned GetGemsInRow(void);
-    unsigned GetGemsInColumn(void);
     void CheckFieldForMatching(void);
     void FieldDeletion(std::vector <std::array <unsigned, 2>> matching);
     void CheckMatch(unsigned i, unsigned j);

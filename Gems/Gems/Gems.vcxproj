@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FieldRefilling.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="Setup.cpp" />
     <ClCompile Include="SwapControls.cpp" />

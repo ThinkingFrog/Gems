@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include "Field.h"
 
 //global vector of matching gems, refreshed each time for a new combination
@@ -81,23 +80,4 @@ void Field::CheckMatch(unsigned i, unsigned j) {
                 matching.push_back({ i - 1, j });
                 CheckMatch(i - 1, j);
             }
-}
-
-bool Field::FieldDrop(void) {
-    bool dropped = false;
-    for (unsigned j = 0; j < gemsInColumn - 1; j++)
-        for (unsigned i = 0; i < gemsInRow; i++)
-            if (!gemsMatrix[j][i].IsEmpty() && gemsMatrix[j + 1][i].IsEmpty()) {
-                gemsMatrix[j + 1][i].SetColor(gemsMatrix[j][i].GetColor());
-                gemsMatrix[j][i].SetEmpty();
-                dropped = true;
-            }
-    return dropped;
-}
-
-void Field::FieldRefill(void) {
-    for (unsigned j = 0; j < gemsInColumn; j++)
-        for (unsigned i = 0; i < gemsInRow; i++)
-            if (gemsMatrix[j][i].IsEmpty())
-                gemsMatrix[j][i].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
 }

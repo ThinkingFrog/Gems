@@ -6,6 +6,10 @@ Field::Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned
     height = windowHeight;
     this->gemsInRow = gemsInRow;
     this->gemsInColumn = gemsInColumn;
+    GenerateField();
+}
+
+void Field::GenerateField(void) {
     for (unsigned i = 0; i < gemsInColumn; i++) {
         std::vector <Gem> tmp;
         for (unsigned j = 0; j < gemsInRow; j++) {
@@ -21,12 +25,4 @@ void Field::DrawField(sf::RenderWindow *window) {
     for (unsigned i = 0; i < gemsInColumn; i++)
         for (unsigned j = 0; j < gemsInRow; j++)
             gemsMatrix[i][j].DrawGem(window, (float)j * windowWidth / gemsInRow, (float)i * windowwHeight / gemsInColumn);
-}
-
-unsigned Field::GetGemsInRow(void) {
-    return gemsInRow;
-}
-
-unsigned Field::GetGemsInColumn(void) {
-    return gemsInColumn;
 }

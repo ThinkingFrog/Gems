@@ -1,3 +1,4 @@
+#include <SFML/Graphics.hpp>
 #include "Main.h"
 
 int main(void) {
@@ -6,9 +7,9 @@ int main(void) {
 
     srand((unsigned)time(0));   //random gems' colors generation
 
-    Help();
+    Help();     //console menu
 
-    GameLoop();
+    GameLoop();     //game window itself
 
     return 0;
 }

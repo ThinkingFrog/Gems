@@ -1,4 +1,6 @@
 #include <cmath>
+#include <SFML/Graphics.hpp>
+#include "Field.h"
 #include "Main.h"
 
 void GameLoop(void) {
