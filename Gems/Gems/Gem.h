@@ -19,6 +19,7 @@ public:
 
     void SetColor(sf::Color newColor);
 
+    //function mainly used to highlight gem with yellow
     void SetOutlineColor(sf::Color newOutline);
 
     bool IsEmpty(void);
