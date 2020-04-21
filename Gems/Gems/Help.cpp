@@ -18,6 +18,8 @@ command_code CommandType(std::string command) {
         return cPlay;
     if (command == "/setup")
         return cSetup;
+    if (command == "/exit")
+        return cExit;
     return cWrong;
 }
 
@@ -63,22 +65,26 @@ void Help(void) {
             switch (LocaleType(language)) {
             case lEn:
                 std::cout << "Here are all available commands:" << std::endl << "/help - get a list of all available commands" << std::endl << "/setup - choose window resolution and field size" << std::endl
-                    << "/play - start the game" << std::endl;
+                    << "/play - start the game" << std::endl << "/exit - close menu and quit" << std::endl;
                 break;
 
             case lRu:
                 std::cout << "Все доступные комманды:" << std::endl << "/help - получить список всех доступных комманд" << std::endl << "/setup - настроить разрешения окна и размеры поля" << std::endl
-                    << "/play - начать играть" << std::endl;
+                    << "/play - начать играть" << std::endl << "/exit - закрыть меню и выйти" << std::endl;
                 break;
             }
             break;
 
         case cPlay:
-            return;
+            GameLoop();
             break;
 
         case cSetup:
             Setup();
+            break;
+
+        case cExit:
+            exit(0);
             break;
 
         case cWrong:

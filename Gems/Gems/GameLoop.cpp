@@ -1,5 +1,6 @@
 #include <cmath>
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Field.h"
 #include "Main.h"
 
@@ -12,7 +13,7 @@ void GameLoop(void) {
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
 
-    Field field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight);
+    std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
 
     while (window.isOpen()) {
 
@@ -25,10 +26,10 @@ void GameLoop(void) {
         window.clear();
 
         if (dropped == false)
-            field.CheckFieldForMatching();
-        dropped = field.FieldDrop();
+            field->CheckFieldForMatching();
+        dropped = field->FieldDrop();
         if (dropped == false)
-            field.FieldRefill();
+            field->FieldRefill();
 
         //swap controls
         if (dropped == false)
@@ -40,7 +41,7 @@ void GameLoop(void) {
                     float mouse1Y = (float)localPosition1.y;
                     gem1X = (unsigned)(mouse1X / (float)(userResolutionWidth / fieldWidth));
                     gem1Y = (unsigned)(mouse1Y / (float)(userResolutionHeight / fieldHeight));
-                    field.SetHighlighted(gem1X, gem1Y);
+                    field->SetHighlighted(gem1X, gem1Y);
                     secondClick = true;
                 }
             }
@@ -53,14 +54,19 @@ void GameLoop(void) {
                     gem2X = (unsigned)(mouse2X / (float)(userResolutionWidth / fieldWidth));
                     gem2Y = (unsigned)(mouse2Y / (float)(userResolutionHeight / fieldHeight));
                     if (abs((int)gem2X - (int)gem1X) <= 1 && abs((int)gem2Y - (int)gem1Y) <= 1 && !(abs((int)gem2X - (int)gem1X) == 1 && abs((int)gem2Y - (int)gem1Y) == 1)) {
-                        field.Swap(gem1X, gem1Y, gem2X, gem2Y);
-                        field.RemoveHighlight(gem1X, gem1Y);
+                        field->Swap(gem1X, gem1Y, gem2X, gem2Y);
+                        field->RemoveHighlight(gem1X, gem1Y);
                         secondClick = false;
                     }
                 }
+                else
+                    if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+                        field->RemoveHighlight(gem1X, gem1Y);
+                        secondClick = false;
+                        }
 
         //drawing field
-        field.DrawField(&window);
+        field->DrawField(&window);
 
         window.display();
 

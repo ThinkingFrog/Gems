@@ -9,7 +9,5 @@ int main(void) {
 
     Help();     //console menu
 
-    GameLoop();     //game window itself
-
     return 0;
 }

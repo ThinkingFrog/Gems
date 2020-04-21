@@ -161,6 +161,7 @@
     <ClCompile Include="MatchingDeletion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bonus.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Gem.h" />
     <ClInclude Include="Main.h" />

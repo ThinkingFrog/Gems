@@ -10,6 +10,7 @@ enum command_code {
     cHelp,
     cPlay,
     cSetup,
+    cExit,
     cCount,
     cWrong
 };
