@@ -9,9 +9,10 @@ private:
     float width, height; //gem's individual sizes
     sf::Color color;    //gem's individual color decided from field's color spectre
     sf::Color outline;
+    sf::Texture texture;
 
 public:
-    Gem(float width, float height, sf::Color color);
+    Gem(float width, float height, sf::Color color, std::string newTexture);
 
     sf::Color GetColor(void);
 

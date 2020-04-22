@@ -13,7 +13,8 @@ void Field::GenerateField(void) {
     for (unsigned i = 0; i < gemsInColumn; i++) {
         std::vector <Gem> tmp;
         for (unsigned j = 0; j < gemsInRow; j++) {
-            Gem gem((float)(width / gemsInRow), (float)(height / gemsInColumn), colorsSpectre[rand() % colorsSpectre.size()]);
+            unsigned randomColor = rand() % colorsSpectre.size();
+            Gem gem((float)(width / gemsInRow), (float)(height / gemsInColumn), colorsSpectre[randomColor], texturesSet[randomColor]);
             tmp.push_back(gem);
             while (CheckNeighboursColors(i, j, tmp) >= 2)
                 tmp[j].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
