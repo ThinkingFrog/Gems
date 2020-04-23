@@ -1,13 +1,11 @@
 #include "Gem.h"
 
 //all parametrs are being evaluated in Field class constructor or any other additional Field class method
-Gem::Gem(float newWidth, float newHeight, sf::Color newColor, std::string newTexture) {
+Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
     width = newWidth;
     height = newHeight;
     color = newColor;
     outline = sf::Color::Black;
-    texture.loadFromFile(newTexture);
-    texture.setSmooth(true);
 }
 
 sf::Color Gem::GetColor(void) {
@@ -37,8 +35,7 @@ void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
     sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setFillColor(color);
     shape.setPosition(x, y);
-    shape.setOutlineThickness(-(width + height) / 2 * 0.075);
+    shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(outline);
-    shape.setTexture(&texture);
     (*window).draw(shape);
 }

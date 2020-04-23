@@ -13,14 +13,17 @@ void Field::GenerateField(void) {
     for (unsigned i = 0; i < gemsInColumn; i++) {
         std::vector <Gem> tmp;
         for (unsigned j = 0; j < gemsInRow; j++) {
-            unsigned randomColor = rand() % colorsSpectre.size();
-            Gem gem((float)(width / gemsInRow), (float)(height / gemsInColumn), colorsSpectre[randomColor], texturesSet[randomColor]);
+            Gem gem((float)(width / gemsInRow), (float)(height / gemsInColumn), colorsSpectre[rand() % colorsSpectre.size()]);
             tmp.push_back(gem);
             while (CheckNeighboursColors(i, j, tmp) >= 2)
                 tmp[j].SetColor(colorsSpectre[rand() % colorsSpectre.size()]);
         }
         gemsMatrix.push_back(tmp);
     }
+}
+
+std::array <sf::Color, 6> Field::GetColorsSpectre(void) {
+    return colorsSpectre;
 }
 
 void Field::DrawField(sf::RenderWindow* window) {

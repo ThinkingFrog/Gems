@@ -9,8 +9,6 @@ class Field {
 private:
     std::vector <std::vector <Gem>> gemsMatrix; //matrix of all gem objects on the screen
     std::array <sf::Color, 6> colorsSpectre = { sf::Color::Green, sf::Color::Blue, sf::Color::Red, sf::Color::Yellow, sf::Color::Cyan, sf::Color::Magenta };    //possible colors array
-    std::array <std::string, 6> texturesSet = {"../../Textures/Test1.png", "../../Textures/Test2.png", "../../Textures/Test3.png", "../../Textures/Test4.png", "../../Textures/Test5.png",
-        "../../Textures/Test6.png" };
     float width, height; //size of field taken from current window's size
     unsigned gemsInRow, gemsInColumn;   //amount of gems on the playfield
 public:
@@ -19,11 +17,12 @@ public:
 
     void GenerateField(void);
 
+    std::array<sf::Color, 6> GetColorsSpectre(void);
+
     //Drawing full playfield depending on gems matrix
     void DrawField(sf::RenderWindow *window);
 
     unsigned CheckNeighboursColors(unsigned i, unsigned j, std::vector <Gem> tmp);
-
 
     void CheckFieldForMatching(void);
     void FieldDeletion(std::vector <std::array <unsigned, 2>> matching);

@@ -9,6 +9,8 @@ void GameLoop(void) {
     bool secondClick = false;
     bool dropped = false;
 
+    double framePauseSec = 0.35;
+
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
@@ -72,6 +74,6 @@ void GameLoop(void) {
 
         //Time between frames
         sf::Clock timer;
-        while (timer.getElapsedTime().asSeconds() < 0.25);
+        while (timer.getElapsedTime().asSeconds() < framePauseSec);
     }
 }
