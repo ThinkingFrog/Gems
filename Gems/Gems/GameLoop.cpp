@@ -3,19 +3,22 @@
 #include <memory>
 #include "Field.h"
 #include "Main.h"
+#include "Textures.h"
 
 void GameLoop(void) {
 
     bool secondClick = false;
     bool dropped = false;
 
-    double framePauseSec = 0.35;
+    double framePauseSec = 0.2;
 
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
 
     std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
+
+    InitTexturesSet();
 
     while (window.isOpen()) {
 

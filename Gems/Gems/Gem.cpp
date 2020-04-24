@@ -1,4 +1,5 @@
 #include "Gem.h"
+#include "Textures.h"
 
 //all parametrs are being evaluated in Field class constructor or any other additional Field class method
 Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
@@ -37,5 +38,7 @@ void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
     shape.setPosition(x, y);
     shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(outline);
+    sf::Texture texture;
+    shape.setTexture(GetTextureByColor(color));
     (*window).draw(shape);
 }

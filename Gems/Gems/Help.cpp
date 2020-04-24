@@ -13,14 +13,14 @@ language_code LocaleType(std::string language) {
 
 command_code CommandType(std::string command) {
     if (command == "/help")
-        return cHelp;
+        return cmHelp;
     if (command == "/play")
-        return cPlay;
+        return cmPlay;
     if (command == "/setup")
-        return cSetup;
+        return cmSetup;
     if (command == "/exit")
-        return cExit;
-    return cWrong;
+        return cmExit;
+    return cmWrong;
 }
 
 void Help(void) {
@@ -61,7 +61,7 @@ void Help(void) {
 
         switch (CommandType(command)) {
 
-        case cHelp:
+        case cmHelp:
             switch (LocaleType(language)) {
             case lEn:
                 std::cout << "Here are all available commands:" << std::endl << "/help - get a list of all available commands" << std::endl << "/setup - choose window resolution and field size" << std::endl
@@ -75,19 +75,19 @@ void Help(void) {
             }
             break;
 
-        case cPlay:
+        case cmPlay:
             GameLoop();
             break;
 
-        case cSetup:
+        case cmSetup:
             Setup();
             break;
 
-        case cExit:
+        case cmExit:
             exit(0);
             break;
 
-        case cWrong:
+        case cmWrong:
             switch (LocaleType(language)) {
             case lEn:
                 std::cout << "No such command found" << std::endl;

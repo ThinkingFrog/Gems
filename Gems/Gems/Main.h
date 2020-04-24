@@ -7,12 +7,12 @@ enum language_code {
 };
 
 enum command_code {
-    cHelp,
-    cPlay,
-    cSetup,
-    cExit,
-    cCount,
-    cWrong
+    cmHelp,
+    cmPlay,
+    cmSetup,
+    cmExit,
+    cmCount,
+    cmWrong
 };
 
 extern unsigned fieldWidth, fieldHeight, userResolutionWidth, userResolutionHeight;
