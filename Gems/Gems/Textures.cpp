@@ -1,14 +1,21 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "Textures.h"
 
 std::vector <sf::Texture> texturesSet;
 
 void InitTexturesSet(void) {
+    std::string localPath = "../../Textures/";
+    std::fstream file;
+    file.open(localPath + "Test1.png");
+    if (file.fail())
+        localPath = "../../../Textures/";
+    file.close();
     for (unsigned i = 0; i < clCount; i++) {
         sf::Texture texture;
-        texture.loadFromFile("../../Textures/Test" + std::to_string(i + 1) + ".png");
+        texture.loadFromFile(localPath + "Test" + std::to_string(i + 1) + ".png");    
         texture.setSmooth(true);
         texturesSet.push_back(texture);
     } 

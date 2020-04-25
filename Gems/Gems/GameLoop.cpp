@@ -10,11 +10,10 @@ void GameLoop(void) {
     bool secondClick = false;
     bool dropped = false;
 
-    double framePauseSec = 0.2;
-
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
+    window.setFramerateLimit(5);
 
     std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
 
@@ -74,9 +73,5 @@ void GameLoop(void) {
         field->DrawField(&window);
 
         window.display();
-
-        //Time between frames
-        sf::Clock timer;
-        while (timer.getElapsedTime().asSeconds() < framePauseSec);
     }
 }
