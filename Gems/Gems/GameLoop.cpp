@@ -14,7 +14,7 @@ void GameLoop(void) {
 
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
-    sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems");
+    sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
 
     std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
 

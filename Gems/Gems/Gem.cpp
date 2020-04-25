@@ -1,5 +1,6 @@
 #include "Gem.h"
 #include "Textures.h"
+#include "Main.h"
 
 //all parametrs are being evaluated in Field class constructor or any other additional Field class method
 Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
@@ -34,7 +35,7 @@ bool Gem::IsEmpty(void) {
 //function returns an SFML drawable shape to be drawn via window.draw()
 void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
     sf::RectangleShape shape(sf::Vector2f(width, height));
-    shape.setFillColor(color);
+    //shape.setFillColor(color);
     shape.setPosition(x, y);
     shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(outline);
