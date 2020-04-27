@@ -1,25 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <vector>
 #include <fstream>
+#include <string>
+#include <map>
 #include "Textures.h"
 
-std::vector <sf::Texture> texturesSet;
-
-void InitTexturesSet(void) {
-    std::string localPath = "../../Textures/";
-    std::fstream file;
-    file.open(localPath + "Test1.png");
-    if (file.fail())
-        localPath = "../../../Textures/";
-    file.close();
-    for (unsigned i = 0; i < clCount; i++) {
-        sf::Texture texture;
-        texture.loadFromFile(localPath + "Test" + std::to_string(i + 1) + ".png");    
-        texture.setSmooth(true);
-        texturesSet.push_back(texture);
-    } 
-}
+std::map <color_code, sf::Texture> texturesSet;
 
 color_code ColorType(sf::Color color) {
     if (color == sf::Color::Green)
@@ -36,9 +21,28 @@ color_code ColorType(sf::Color color) {
         return clMagenta;
     if (color == sf::Color::Black)
         return clBlack;
-    return clUnknown;
+}
+
+void InitTexturesSet(void) {
+
+    std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
+        {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"} };
+
+    std::string localPath = "../../Textures/";
+    std::fstream file;
+    file.open(localPath + colorsSet.begin()->second + ".png");
+    if (file.fail())
+        localPath = "../../../Textures/";
+    file.close();
+
+    for (auto it = colorsSet.begin(); it != colorsSet.end(); ++it) {
+        sf::Texture texture;
+        texture.loadFromFile(localPath + it->second + ".png");
+        texture.setSmooth(true);
+        texturesSet[it->first] = texture;
+    }
 }
 
 sf::Texture* GetTextureByColor(sf::Color color) {
-    return &texturesSet[ColorType(color)];
+    return &texturesSet.find(ColorType(color))->second;
 }
