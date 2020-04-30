@@ -33,12 +33,14 @@ void Bonus::DrawBonus(sf::RenderWindow* window, std::shared_ptr<Field> field, co
 void Bonus::ShowTriggerText(sf::RenderWindow* window, std::string message, sf::Color color){
     sf::Text text;
 
+    float width = (float)userResolutionWidth / (float)fieldWidth, height = (float)userResolutionHeight / (float)fieldHeight;
+
     text.setFont(font);
     text.setString(message);
-    text.setCharacterSize(15);
+    text.setCharacterSize((width + height) / 10);
     text.setFillColor(color);
     text.setStyle(sf::Text::Bold);
-    text.setPosition((float)x * (float)userResolutionWidth / (float)fieldWidth, (float)y * (float)userResolutionHeight / (float)fieldHeight);
+    text.setPosition((float)x * width, (float)y * height + height / 2);
 
     window->draw(text);
 }

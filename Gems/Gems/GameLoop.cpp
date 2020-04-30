@@ -21,7 +21,7 @@ void GameLoop(void) {
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
     sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
-    window.setFramerateLimit(1);
+    window.setFramerateLimit(FRAME_RATE);
 
     std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
 
@@ -72,7 +72,15 @@ void GameLoop(void) {
                     bonus = std::make_shared<Bomb>();
                     break;
                 }
-                bonus->SetPosition(matching[0][0], matching[0][1]);
+
+                unsigned spawnX, spawnY;
+
+                do {
+                    spawnX = matching[0][0] + (int)pow(-1, rand() % fieldWidth) * (rand() % BONUS_SPAWN_RADIUS + 1);
+                    spawnY = matching[0][1] + (int)pow(-1, rand() % fieldHeight) * (rand() % BONUS_SPAWN_RADIUS + 1);
+                } while (spawnX >= fieldWidth || spawnY >= fieldHeight);
+
+                bonus->SetPosition(spawnX, spawnY);
                 bonusSpawned = true;
             }
         }

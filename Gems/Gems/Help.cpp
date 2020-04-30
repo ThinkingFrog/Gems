@@ -84,7 +84,7 @@ void Help(void) {
             break;
 
         case cmExit:
-            exit(0);
+            std::exit(0);
             break;
 
         case cmWrong:

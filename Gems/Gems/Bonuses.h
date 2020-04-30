@@ -11,7 +11,7 @@ protected:
     std::string triggerMessage;
     sf::Color triggerColor;
 public:
-    Bonus() : x(0), y(0), type(clCount) {}
+    Bonus() : x(0), y(0) {}
     color_code GetType() { return type; }
     virtual void Trigger(std::shared_ptr<Field> field) = 0;
     void SetPosition(unsigned xnew, unsigned ynew);

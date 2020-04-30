@@ -2,6 +2,8 @@
 
 #define BONUS_CHANCE 100
 #define BONUS_COUNT 2
+#define FRAME_RATE 3
+#define BONUS_SPAWN_RADIUS 3
 
 enum language_code {
     lEn,
