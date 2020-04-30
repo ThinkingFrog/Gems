@@ -34,12 +34,16 @@ bool Gem::IsEmpty(void) {
 
 //function returns an SFML drawable shape to be drawn via window.draw()
 void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
-    sf::RectangleShape shape(sf::Vector2f(width, height));
-    //shape.setFillColor(color);
+    bool applyTex = !TexturesSetIsDamaged();
+    sf::RectangleShape shape(sf::Vector2f(width, height));   
     shape.setPosition(x, y);
     shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(outline);
-    sf::Texture texture;
-    shape.setTexture(GetTextureByColor(color));
+    if (applyTex) {
+        sf::Texture texture;
+        shape.setTexture(GetTextureByColor(color));
+    }
+    else
+        shape.setFillColor(color);
     (*window).draw(shape);
 }

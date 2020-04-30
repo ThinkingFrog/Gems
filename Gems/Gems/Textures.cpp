@@ -26,14 +26,17 @@ color_code ColorType(sf::Color color) {
 void InitTexturesSet(void) {
 
     std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
-        {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"} };
+        {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"}, {clBomb, "Bomb"}, {clPainter, "Painter"} };
 
     std::string localPath = "../../Textures/";
+
     std::fstream file;
-    file.open(localPath + colorsSet.begin()->second + ".png");
-    if (file.fail())
-        localPath = "../../../Textures/";
-    file.close();
+    for (auto it = colorsSet.begin(); it != colorsSet.end(); ++it) {
+        file.open(localPath + it->second + ".png");
+        if (file.fail())
+            return;
+        file.close();
+    }
 
     for (auto it = colorsSet.begin(); it != colorsSet.end(); ++it) {
         sf::Texture texture;
@@ -44,5 +47,13 @@ void InitTexturesSet(void) {
 }
 
 sf::Texture* GetTextureByColor(sf::Color color) {
-    return &texturesSet.find(ColorType(color))->second;
+    return &texturesSet[ColorType(color)];
+}
+
+sf::Texture* GetTextureByCode(color_code code) {
+    return &texturesSet[code];
+}
+
+bool TexturesSetIsDamaged(void) {
+    return (texturesSet.size() != clCount);
 }

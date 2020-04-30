@@ -1,10 +1,14 @@
+#include <cstdlib>
 #include "Field.h"
+#include "Bonuses.h"
+#include "Main.h"
+
 
 //global vector of matching gems, refreshed each time for a new combination
 std::vector <std::array <unsigned, 2>> matching;
 
 //Major function that runs all deletion of 3+ matching gems
-void Field::CheckFieldForMatching(void) {
+bool Field::CheckFieldForMatching(void) {
     matching.clear();
     bool found = false;
 
@@ -25,6 +29,8 @@ void Field::CheckFieldForMatching(void) {
     }
 
     FieldDeletion(matching);
+
+    return found;
 }
 
 //Deleting all gems in given vector

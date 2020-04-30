@@ -1,5 +1,8 @@
 #pragma once
 
+#define BONUS_CHANCE 100
+#define BONUS_COUNT 2
+
 enum language_code {
     lEn,
     lRu,

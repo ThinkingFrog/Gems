@@ -26,6 +26,14 @@ std::array <sf::Color, 6> Field::GetColorsSpectre(void) {
     return colorsSpectre;
 }
 
+unsigned Field::GetGemsInRow() {
+    return gemsInRow;
+}
+
+unsigned Field::GetGemsInColumn() {
+    return gemsInColumn;
+}
+
 void Field::DrawField(sf::RenderWindow* window) {
     float windowWidth = (float)(*window).getSize().x, windowwHeight = (float)(*window).getSize().y;
     for (unsigned i = 0; i < gemsInColumn; i++)
@@ -57,4 +65,9 @@ unsigned Field::CheckNeighboursColors(unsigned i, unsigned j, std::vector <Gem> 
             sum += 1;
 
     return sum;
+}
+
+void Field::SetNewColors(std::vector <std::array <unsigned, 2>> painted, unsigned x, unsigned y) {
+    for (auto it : painted)
+        gemsMatrix[it[1]][it[0]].SetColor(gemsMatrix[y][x].GetColor());
 }

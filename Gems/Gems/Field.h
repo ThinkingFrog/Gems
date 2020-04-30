@@ -19,12 +19,18 @@ public:
 
     std::array<sf::Color, 6> GetColorsSpectre(void);
 
+    unsigned GetGemsInRow();
+
+    unsigned GetGemsInColumn();
+
     //Drawing full playfield depending on gems matrix
     void DrawField(sf::RenderWindow *window);
 
     unsigned CheckNeighboursColors(unsigned i, unsigned j, std::vector <Gem> tmp);
 
-    void CheckFieldForMatching(void);
+    void SetNewColors(std::vector<std::array<unsigned, 2>> painted, unsigned x, unsigned y);
+
+    bool CheckFieldForMatching(void);
     void FieldDeletion(std::vector <std::array <unsigned, 2>> matching);
     void CheckMatch(unsigned i, unsigned j);
     bool FieldDrop(void);

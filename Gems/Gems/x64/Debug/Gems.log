@@ -1,2 +1,5 @@
-﻿  Gem.cpp
+﻿  Bonuses.cpp
+  GameLoop.cpp
+  MatchingDeletion.cpp
+  Создание кода...
   Gems.vcxproj -> C:\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe

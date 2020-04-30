@@ -150,7 +150,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bonuses.cpp" />
     <ClCompile Include="FieldRefilling.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="Setup.cpp" />
     <ClCompile Include="SwapControls.cpp" />
@@ -162,8 +164,9 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="Bonuses.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="Gem.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Textures.h" />

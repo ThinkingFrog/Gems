@@ -7,9 +7,13 @@ enum color_code {
     clYellow,
     clCyan,
     clMagenta,
-    clCount,
-    clBlack
+    clBlack,
+    clBomb,
+    clPainter,
+    clCount
 };
 
 void InitTexturesSet(void);
 sf::Texture* GetTextureByColor(sf::Color color);
+sf::Texture* GetTextureByCode(color_code code);
+bool TexturesSetIsDamaged(void);
