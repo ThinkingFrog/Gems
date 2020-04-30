@@ -11,7 +11,7 @@ void Bonus::SetPosition(unsigned xnew, unsigned ynew) {
 }
 
 void Bonus::DrawBonus(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<Field> field, color_code bonusType) {
-    float width = (float)userResolutionWidth / fieldWidth, height = (float)userResolutionHeight / fieldHeight;
+    float width = (float)window->getSize().x / field->GetGemsInRow(), height = (float)window->getSize().y / field->GetGemsInColumn();
     bool applyTex = !field->texMng->TexturesSetIsDamaged();
     sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setPosition((float)x * width, (float)y * height);
@@ -24,13 +24,13 @@ void Bonus::DrawBonus(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr
     else
         shape.setFillColor(sf::Color::White);
     window->draw(shape);
-    ShowTriggerText(window, triggerMessage, triggerColor);
+    ShowTriggerText(window, field, triggerMessage, triggerColor);
 }
 
-void Bonus::ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::string message, sf::Color color){
+void Bonus::ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr <Field> field, std::string message, sf::Color color){
     sf::Text text;
 
-    float width = (float)userResolutionWidth / (float)fieldWidth, height = (float)userResolutionHeight / (float)fieldHeight;
+    float width = (float)window->getSize().x / field->GetGemsInRow(), height = (float)window->getSize().y / field->GetGemsInColumn();
 
     text.setFont(font);
     text.setString(message);
@@ -55,9 +55,9 @@ void Painter::Trigger(std::shared_ptr<Field> field) {
     for (unsigned i = 0; i < paintedAmount; ++i) {
         unsigned xrand, yrand;
         do {
-            xrand = x + (int)pow(-1, rand() % fieldWidth) * (rand() % (paintedRadius - 1) + 2);
-            yrand = y + (int)pow(-1, rand() % fieldHeight) * (rand() % (paintedRadius - 1) + 2);
-        } while (xrand >= fieldWidth || yrand >= fieldHeight);
+            xrand = x + (int)pow(-1, rand() % field->GetGemsInRow()) * (rand() % (paintedRadius - 1) + 2);
+            yrand = y + (int)pow(-1, rand() % field->GetGemsInColumn()) * (rand() % (paintedRadius - 1) + 2);
+        } while (xrand >= field->GetGemsInRow() || yrand >= field->GetGemsInColumn());
         painted.push_back({ xrand, yrand });
     }
     field->SetNewColors(painted, x, y);

@@ -49,6 +49,6 @@ sf::Texture* TextureManager::GetTextureByCode(color_code code) {
     return &texturesSet[code];
 }
 
-bool TextureManager::TexturesSetIsDamaged(void) {
+bool TextureManager::TexturesSetIsDamaged() {
     return (texturesSet.size() != clCount);
 }

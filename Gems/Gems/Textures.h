@@ -9,7 +9,8 @@ private:
         {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"}, {clBomb, "Bomb"}, {clPainter, "Painter"} };
 public:
     TextureManager();
+    ~TextureManager() {}
     sf::Texture* GetTextureByColor(sf::Color color);
     sf::Texture* GetTextureByCode(color_code code);
-    bool TexturesSetIsDamaged(void);
+    bool TexturesSetIsDamaged();
 };

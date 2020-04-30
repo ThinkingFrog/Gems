@@ -13,17 +13,18 @@ private:
 
 public:
     Gem(float width, float height, sf::Color color);
+    ~Gem() {}
 
-    sf::Color GetColor(void);
+    sf::Color GetColor();
 
-    void SetEmpty(void);
+    void SetEmpty();
 
     void SetColor(sf::Color newColor);
 
     //function mainly used to highlight gem with yellow
     void SetOutlineColor(sf::Color newOutline);
 
-    bool IsEmpty(void);
+    bool IsEmpty();
 
     //Draw single gem in (x,y) coordinates
     void DrawGem(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<TextureManager> texMng, float x, float y);

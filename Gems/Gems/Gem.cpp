@@ -11,11 +11,11 @@ Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
     outline = sf::Color::Black;
 }
 
-sf::Color Gem::GetColor(void) {
+sf::Color Gem::GetColor() {
     return color;
 }
 
-void Gem::SetEmpty(void) {
+void Gem::SetEmpty() {
     color = sf::Color::Black;
 }
 
@@ -27,7 +27,7 @@ void Gem::SetOutlineColor(sf::Color newOutline) {
     outline = newOutline;
 }
 
-bool Gem::IsEmpty(void) {
+bool Gem::IsEmpty() {
     if (color == sf::Color::Black)
         return true;
     return false;

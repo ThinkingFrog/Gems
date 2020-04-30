@@ -1,6 +1,8 @@
 #include <crtdbg.h>
 #include <SFML/Graphics.hpp>
 #include "Main.h"
+#include "Menu.h"
+#include "Font.h"
 
 int main(void) {
 
@@ -8,7 +10,9 @@ int main(void) {
 
     srand((unsigned)time(0));   //random gems' colors generation
 
-    Menu();     //console menu
+    Menu menu;     //console menu
+
+    menu.Start();
 
     return 0;
 }

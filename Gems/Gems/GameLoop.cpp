@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "Menu.h"
 #include "Field.h"
 #include "Main.h"
 #include "Textures.h"
 #include "Bonuses.h"
 
-void GameLoop(void) {
+void Menu::GameLoop(void) {
     bool secondClick = false;
     bool dropped = false;
     bool bonusSpawned = false;

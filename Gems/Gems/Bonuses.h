@@ -12,11 +12,12 @@ protected:
     sf::Color triggerColor;
 public:
     Bonus() : x(0), y(0) {}
+    ~Bonus() {}
     color_code GetType() { return type; }
     virtual void Trigger(std::shared_ptr<Field> field) = 0;
     void SetPosition(unsigned xnew, unsigned ynew);
     void DrawBonus(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<Field> field, color_code bonusType);
-    void ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::string message, sf::Color color);
+    void ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr <Field> field, std::string message, sf::Color color);
 };
 
 class Bomb : public Bonus {
@@ -24,6 +25,7 @@ private:
     unsigned bombedAmount = 5;
 public:
     Bomb() { type = clBomb; triggerMessage = "*BOOM*", triggerColor = sf::Color::Red;}
+    ~Bomb() {}
     void Trigger(std::shared_ptr<Field> field) override;
 };
 
@@ -34,5 +36,6 @@ private:
     unsigned paintedRadius = 3;     
 public:
     Painter() { type = clPainter; triggerMessage = "*SWOOSH*", triggerColor = sf::Color::Magenta; }
+    ~Painter() {}
     void Trigger(std::shared_ptr<Field> field) override;
 };

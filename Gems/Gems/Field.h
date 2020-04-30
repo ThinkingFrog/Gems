@@ -18,6 +18,7 @@ public:
 
     //field constructor depending on current window's sizes and field's sizes; by default field is 10x10
     Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned gemsInColumn);
+    ~Field() {}
 
     void GenerateField(void);
 
