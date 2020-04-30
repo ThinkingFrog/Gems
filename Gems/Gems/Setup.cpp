@@ -4,7 +4,7 @@
 unsigned fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
 unsigned userResolutionWidth = 800, userResolutionHeight = 600;    //Window resolution
 
-void Setup(void) {
+void Setup(std::string language) {
 
     switch (LocaleType(language)) {
     case lEn:

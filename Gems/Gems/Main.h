@@ -1,6 +1,6 @@
 #pragma once
 
-#define BONUS_CHANCE 100
+#define BONUS_CHANCE 5
 #define BONUS_COUNT 2
 #define FRAME_RATE 3
 #define BONUS_SPAWN_RADIUS 3
@@ -20,11 +20,23 @@ enum command_code {
     cmWrong
 };
 
+enum color_code {
+    clGreen,
+    clBlue,
+    clRed,
+    clYellow,
+    clCyan,
+    clMagenta,
+    clBlack,
+    clBomb,
+    clPainter,
+    clCount
+};
+
 extern unsigned fieldWidth, fieldHeight, userResolutionWidth, userResolutionHeight;
-extern std::string language;
 
 language_code LocaleType(std::string language);
 command_code CommandType(std::string command);
 void GameLoop(void);
-void Setup(void);
-void Help(void);
+void Setup(std::string language);
+void Menu(void);

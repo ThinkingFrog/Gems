@@ -15,8 +15,8 @@ public:
     color_code GetType() { return type; }
     virtual void Trigger(std::shared_ptr<Field> field) = 0;
     void SetPosition(unsigned xnew, unsigned ynew);
-    void DrawBonus(sf::RenderWindow* window, std::shared_ptr<Field> field, color_code bonusType);
-    void ShowTriggerText(sf::RenderWindow* window, std::string message, sf::Color color);
+    void DrawBonus(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<Field> field, color_code bonusType);
+    void ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::string message, sf::Color color);
 };
 
 class Bomb : public Bonus {

@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include "Field.h"
+#include "Font.h"
 
 Field::Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned gemsInColumn) {
     width = windowWidth;
@@ -7,6 +8,8 @@ Field::Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned
     this->gemsInRow = gemsInRow;
     this->gemsInColumn = gemsInColumn;
     GenerateField();
+    InitFont();
+    texMng = std::make_shared<TextureManager>();
 }
 
 void Field::GenerateField(void) {
@@ -34,11 +37,15 @@ unsigned Field::GetGemsInColumn() {
     return gemsInColumn;
 }
 
-void Field::DrawField(sf::RenderWindow* window) {
-    float windowWidth = (float)(*window).getSize().x, windowwHeight = (float)(*window).getSize().y;
+std::vector <std::array <unsigned, 2>> Field::GetMatchingVector() {
+    return matching;
+}
+
+void Field::DrawField(std::shared_ptr <sf::RenderWindow> window) {
+    float windowWidth = (float)window->getSize().x, windowwHeight = (float)window->getSize().y;
     for (unsigned i = 0; i < gemsInColumn; i++)
         for (unsigned j = 0; j < gemsInRow; j++)
-            gemsMatrix[i][j].DrawGem(window, (float)j * windowWidth / gemsInRow, (float)i * windowwHeight / gemsInColumn);
+            gemsMatrix[i][j].DrawGem(window, texMng, (float)j * windowWidth / gemsInRow, (float)i * windowwHeight / gemsInColumn);
 }
 
 unsigned Field::CheckNeighboursColors(unsigned i, unsigned j, std::vector <Gem> tmp) {

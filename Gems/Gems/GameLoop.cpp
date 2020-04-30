@@ -1,16 +1,11 @@
-#include <cmath>
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Field.h"
 #include "Main.h"
 #include "Textures.h"
 #include "Bonuses.h"
-#include "Font.h"
-
-extern std::vector <std::array <unsigned, 2>> matching;
 
 void GameLoop(void) {
-
     bool secondClick = false;
     bool dropped = false;
     bool bonusSpawned = false;
@@ -20,24 +15,20 @@ void GameLoop(void) {
 
     unsigned gem1X, gem1Y, gem2X, gem2Y;
 
-    sf::RenderWindow window(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
-    window.setFramerateLimit(FRAME_RATE);
+    std::shared_ptr <sf::RenderWindow> window(new sf::RenderWindow(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close));
+    window->setFramerateLimit(FRAME_RATE);
 
     std::shared_ptr <Field> field(new Field((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight));
 
     std::shared_ptr <Bonus> bonus;
 
-    InitTexturesSet();
-    InitFont();
-
-    while (window.isOpen()) {
-
+    while (window->isOpen()) {
         hasFocus = true;
 
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                window->close();
             if (event.type == sf::Event::LostFocus)
                 hasFocus = false;
         }
@@ -45,7 +36,7 @@ void GameLoop(void) {
         if (hasFocus == false)
             continue;
 
-        window.clear();
+        window->clear();
 
         deleted = false;
         bonusTriggered = false;
@@ -54,6 +45,7 @@ void GameLoop(void) {
             bonus->Trigger(field);
             bonusSpawned = false;
             bonusTriggered = true;
+            bonus.reset();
         }
 
         if (dropped == false && bonusTriggered == false)
@@ -63,7 +55,7 @@ void GameLoop(void) {
             field->FieldRefill();
 
         if (deleted == true) {
-            if (rand() % 100 < BONUS_CHANCE * matching.size()) {
+            if (rand() % 100 < BONUS_CHANCE * field->GetMatchingVector().size()) {
                 switch (rand() % BONUS_COUNT) {
                 case 0:
                     bonus = std::make_shared<Painter>();
@@ -76,8 +68,8 @@ void GameLoop(void) {
                 unsigned spawnX, spawnY;
 
                 do {
-                    spawnX = matching[0][0] + (int)pow(-1, rand() % fieldWidth) * (rand() % BONUS_SPAWN_RADIUS + 1);
-                    spawnY = matching[0][1] + (int)pow(-1, rand() % fieldHeight) * (rand() % BONUS_SPAWN_RADIUS + 1);
+                    spawnX = field->GetMatchingVector()[0][0] + (int)pow(-1, rand() % fieldWidth) * (rand() % BONUS_SPAWN_RADIUS + 1);
+                    spawnY = field->GetMatchingVector()[0][1] + (int)pow(-1, rand() % fieldHeight) * (rand() % BONUS_SPAWN_RADIUS + 1);
                 } while (spawnX >= fieldWidth || spawnY >= fieldHeight);
 
                 bonus->SetPosition(spawnX, spawnY);
@@ -90,7 +82,7 @@ void GameLoop(void) {
             if (secondClick == false) {
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-                    sf::Vector2i localPosition1 = sf::Mouse::getPosition(window);
+                    sf::Vector2i localPosition1 = sf::Mouse::getPosition(*window);
                     float mouse1X = (float)localPosition1.x;
                     float mouse1Y = (float)localPosition1.y;
                     gem1X = (unsigned)(mouse1X / (float)(userResolutionWidth / fieldWidth));
@@ -102,7 +94,7 @@ void GameLoop(void) {
             else
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-                    sf::Vector2i localPosition2 = sf::Mouse::getPosition(window);
+                    sf::Vector2i localPosition2 = sf::Mouse::getPosition(*window);
                     float mouse2X = (float)localPosition2.x;
                     float mouse2Y = (float)localPosition2.y;
                     gem2X = (unsigned)(mouse2X / (float)(userResolutionWidth / fieldWidth));
@@ -120,11 +112,11 @@ void GameLoop(void) {
                         }
 
         //drawing field
-        field->DrawField(&window);
+        field->DrawField(window);
 
         if (bonusSpawned == true)
-            bonus->DrawBonus(&window, field, bonus->GetType());
+            bonus->DrawBonus(window, field, bonus->GetType());
 
-        window.display();
+        window->display();
     }
 }

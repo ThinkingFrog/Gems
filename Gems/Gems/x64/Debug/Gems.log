@@ -1,3 +1,2 @@
-﻿  Help.cpp
-C:\Documents\GitHub\Gems\Gems\Gems\Help.cpp(12): warning C4715: LocaleType: значение возвращается не при всех путях выполнения
+﻿  Main.cpp
   Gems.vcxproj -> C:\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe

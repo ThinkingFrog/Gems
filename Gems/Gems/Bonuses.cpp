@@ -1,11 +1,8 @@
 #include <cstdlib>
-#include <cmath>
-#include <iostream>
 #include <string>
 #include "Bonuses.h"
 #include "Main.h"
 #include "Field.h"
-#include "Textures.h"
 #include "Font.h"
 
 void Bonus::SetPosition(unsigned xnew, unsigned ynew) {
@@ -13,31 +10,31 @@ void Bonus::SetPosition(unsigned xnew, unsigned ynew) {
     y = ynew;
 }
 
-void Bonus::DrawBonus(sf::RenderWindow* window, std::shared_ptr<Field> field, color_code bonusType) {
+void Bonus::DrawBonus(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<Field> field, color_code bonusType) {
     float width = (float)userResolutionWidth / fieldWidth, height = (float)userResolutionHeight / fieldHeight;
-    bool applyTex = !TexturesSetIsDamaged();
+    bool applyTex = !field->texMng->TexturesSetIsDamaged();
     sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setPosition((float)x * width, (float)y * height);
     shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(sf::Color::Black);
     if (applyTex) {
         sf::Texture texture;
-        shape.setTexture(GetTextureByCode(bonusType));
+        shape.setTexture(field->texMng->GetTextureByCode(bonusType));
     }
     else
         shape.setFillColor(sf::Color::White);
-    (*window).draw(shape);
+    window->draw(shape);
     ShowTriggerText(window, triggerMessage, triggerColor);
 }
 
-void Bonus::ShowTriggerText(sf::RenderWindow* window, std::string message, sf::Color color){
+void Bonus::ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::string message, sf::Color color){
     sf::Text text;
 
     float width = (float)userResolutionWidth / (float)fieldWidth, height = (float)userResolutionHeight / (float)fieldHeight;
 
     text.setFont(font);
     text.setString(message);
-    text.setCharacterSize((width + height) / 10);
+    text.setCharacterSize((unsigned)(width + height) / 10);
     text.setFillColor(color);
     text.setStyle(sf::Text::Bold);
     text.setPosition((float)x * width, (float)y * height + height / 2);

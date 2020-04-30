@@ -3,10 +3,6 @@
 #include "Bonuses.h"
 #include "Main.h"
 
-
-//global vector of matching gems, refreshed each time for a new combination
-std::vector <std::array <unsigned, 2>> matching;
-
 //Major function that runs all deletion of 3+ matching gems
 bool Field::CheckFieldForMatching(void) {
     matching.clear();
@@ -41,7 +37,7 @@ void Field::FieldDeletion(std::vector <std::array <unsigned, 2>> matching) {
 }
 
 //Supporting function for CheckMatch function that ensures that given gem wasn't already flaged
-bool AlreadyMatched(unsigned i, unsigned j) {
+bool Field::AlreadyMatched(unsigned i, unsigned j) {
     for (unsigned k = 0; k < matching.size(); k++)
         if (matching[k][0] == i && matching[k][1] == j)
             return true;

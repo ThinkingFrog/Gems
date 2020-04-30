@@ -1,6 +1,7 @@
 #include "Gem.h"
 #include "Textures.h"
 #include "Main.h"
+#include "Field.h"
 
 //all parametrs are being evaluated in Field class constructor or any other additional Field class method
 Gem::Gem(float newWidth, float newHeight, sf::Color newColor) {
@@ -33,17 +34,17 @@ bool Gem::IsEmpty(void) {
 }
 
 //function returns an SFML drawable shape to be drawn via window.draw()
-void Gem::DrawGem(sf::RenderWindow *window, float x, float y) {
-    bool applyTex = !TexturesSetIsDamaged();
+void Gem::DrawGem(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<TextureManager> texMng, float x, float y) {
+    bool applyTex = !texMng->TexturesSetIsDamaged();
     sf::RectangleShape shape(sf::Vector2f(width, height));   
     shape.setPosition(x, y);
     shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
     shape.setOutlineColor(outline);
     if (applyTex) {
-        sf::Texture texture;
-        shape.setTexture(GetTextureByColor(color));
+        sf::Texture *texture = texMng->GetTextureByColor(color);
+        shape.setTexture(texture);
     }
     else
         shape.setFillColor(color);
-    (*window).draw(shape);
+    window->draw(shape);
 }

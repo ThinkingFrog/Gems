@@ -4,8 +4,6 @@
 #include <map>
 #include "Textures.h"
 
-std::map <color_code, sf::Texture> texturesSet;
-
 color_code ColorType(sf::Color color) {
     if (color == sf::Color::Green)
         return clGreen;
@@ -23,10 +21,7 @@ color_code ColorType(sf::Color color) {
         return clBlack;
 }
 
-void InitTexturesSet(void) {
-
-    std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
-        {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"}, {clBomb, "Bomb"}, {clPainter, "Painter"} };
+TextureManager::TextureManager() {
 
     std::string localPath = "../../Textures/";
 
@@ -46,14 +41,14 @@ void InitTexturesSet(void) {
     }
 }
 
-sf::Texture* GetTextureByColor(sf::Color color) {
+sf::Texture* TextureManager::GetTextureByColor(sf::Color color) {
     return &texturesSet[ColorType(color)];
 }
 
-sf::Texture* GetTextureByCode(color_code code) {
+sf::Texture* TextureManager::GetTextureByCode(color_code code) {
     return &texturesSet[code];
 }
 
-bool TexturesSetIsDamaged(void) {
+bool TextureManager::TexturesSetIsDamaged(void) {
     return (texturesSet.size() != clCount);
 }

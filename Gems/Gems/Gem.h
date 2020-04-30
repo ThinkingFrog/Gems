@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Textures.h"
 
 //Main class for all objects on the game field
 //Has sizes and color of each object
@@ -25,5 +26,5 @@ public:
     bool IsEmpty(void);
 
     //Draw single gem in (x,y) coordinates
-    void DrawGem(sf::RenderWindow* window, float x, float y);
+    void DrawGem(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<TextureManager> texMng, float x, float y);
 };
