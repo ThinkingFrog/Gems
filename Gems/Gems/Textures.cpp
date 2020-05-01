@@ -4,6 +4,9 @@
 #include <map>
 #include "Textures.h"
 
+/**
+*Associates color and color_code to be able to load textures simply by gem's color
+*/
 color_code ColorType(sf::Color color) {
     if (color == sf::Color::Green)
         return clGreen;
@@ -50,5 +53,5 @@ sf::Texture* TextureManager::GetTextureByCode(color_code code) {
 }
 
 bool TextureManager::TexturesSetIsDamaged() {
-    return (texturesSet.size() != clCount);
+    return (texturesSet.size() != colorsSet.size());
 }

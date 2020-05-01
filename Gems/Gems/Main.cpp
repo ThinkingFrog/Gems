@@ -1,4 +1,3 @@
-#include <crtdbg.h>
 #include <SFML/Graphics.hpp>
 #include "Main.h"
 #include "Menu.h"

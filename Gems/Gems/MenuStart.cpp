@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Menu.h"
+#include "GameLoop.h"
 
 void Menu::Start() {
 
@@ -20,7 +21,8 @@ void Menu::Start() {
             break;
 
         case cmPlay:
-            GameLoop();
+            GameLoop GameLoop();
+            GameLoop.Start();
             break;
 
         case cmSetup:

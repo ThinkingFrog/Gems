@@ -4,8 +4,8 @@
 #include "Main.h"
 
 Menu::Menu() {
-    fieldWidth = 10, fieldHeight = 10; //Amount of gems in row and in column
-    userResolutionWidth = 800, userResolutionHeight = 600;    //Window resolution
+    fieldWidth = 10, fieldHeight = 10;
+    userResolutionWidth = 800, userResolutionHeight = 600;
     
     language = "en";
     do {
@@ -45,8 +45,12 @@ void Menu::Setup() {
         std::cout << "Input window resolution (by default 800 600): ";
         std::cin >> userResolutionWidth >> userResolutionHeight;
 
-        std::cout << "Input field size (by default 10 10): ";
-        std::cin >> fieldWidth >> fieldHeight;
+        do {
+            if (fieldWidth <= BONUS_SPAWN_RADIUS || fieldHeight <= BONUS_SPAWN_RADIUS)
+                std::cout << "Field too small, try bigger values";
+            std::cout << "Input field size (by default 10 10): ";
+            std::cin >> fieldWidth >> fieldHeight;
+        } while (fieldWidth <= BONUS_SPAWN_RADIUS || fieldHeight <= BONUS_SPAWN_RADIUS);
         break;
 
     case lRu:

@@ -1,2 +1,52 @@
-﻿  Main.cpp
-  Gems.vcxproj -> C:\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe
+﻿  GameLoopModules.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(204,12): error C2664: "sf::RenderWindow::RenderWindow(const sf::RenderWindow &)": невозможно преобразовать аргумент 1 из "unsigned int" в "sf::VideoMode"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(202,109): message : Ни один конструктор не смог принять исходный тип, либо разрешение перегрузки конструктора неоднозначно
+C:\Documents\GitHub\Gems\SFML-2.5.1\include\SFML\Graphics\RenderWindow.hpp(76,5): message : см. объявление "sf::RenderWindow::RenderWindow"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1485): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::_Construct_in_place<_Ty,unsigned int&,const char(&)[5],sf::Style::<unnamed-enum-None>>(_Ty &,unsigned int &,const char (&)[5],sf::Style::<unnamed-enum-None> &&) noexcept(false)"
+          with
+          [
+              _Ty=sf::RenderWindow
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1583): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int&,const char(&)[5],sf::Style::<unnamed-enum-None>>(unsigned int &,const char (&)[5],sf::Style::<unnamed-enum-None> &&)"
+          with
+          [
+              _Ty=sf::RenderWindow
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1584): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<unsigned int&,const char(&)[5],sf::Style::<unnamed-enum-None>>(unsigned int &,const char (&)[5],sf::Style::<unnamed-enum-None> &&)"
+          with
+          [
+              _Ty=sf::RenderWindow
+          ]
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoopModules.cpp(18): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::shared_ptr<sf::RenderWindow> std::make_shared<sf::RenderWindow,unsigned int&,const char(&)[5],sf::Style::<unnamed-enum-None>>(unsigned int &,const char (&)[5],sf::Style::<unnamed-enum-None> &&)"
+  Menu.cpp
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(48,31): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(48,68): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(52,32): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(52,69): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(123,141): error C2065: BONUS_CHANCE: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(124,16): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(135,16): error C2065: BONUS_CHANCE: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\Menu.cpp(135,123): error C2065: BONUS_SPAWN_RADIUS: необъявленный идентификатор
+  MenuStart.cpp
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(15,38): error C2653: sf: не является именем класса или пространства имен
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(15,26): error C2065: RenderWindow: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(15,10): error C2923: std::shared_ptr: "RenderWindow" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(16,22): error C2065: Field: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(16,10): error C2923: std::shared_ptr: "Field" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(17,22): error C2065: Bonus: необъявленный идентификатор
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(17,10): error C2923: std::shared_ptr: "Bonus" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(27,1): error C2662: void std::shared_ptr<_Ty>::reset(void) noexcept: невозможно преобразовать указатель "this" из "std::shared_ptr" в "std::shared_ptr<_Ty> &"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(27,1): message : Причина: невозможно преобразовать "std::shared_ptr" в "std::shared_ptr<_Ty>"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(27,9): message : Для преобразования требуется второй оператор пользовательского преобразования или конструктор
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1172,10): message : см. объявление "std::shared_ptr<_Ty>::reset"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(28,1): error C2662: void std::shared_ptr<_Ty>::reset(void) noexcept: невозможно преобразовать указатель "this" из "std::shared_ptr" в "std::shared_ptr<_Ty> &"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(28,1): message : Причина: невозможно преобразовать "std::shared_ptr" в "std::shared_ptr<_Ty>"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(28,9): message : Для преобразования требуется второй оператор пользовательского преобразования или конструктор
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1172,10): message : см. объявление "std::shared_ptr<_Ty>::reset"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(29,1): error C2662: void std::shared_ptr<_Ty>::reset(void) noexcept: невозможно преобразовать указатель "this" из "std::shared_ptr" в "std::shared_ptr<_Ty> &"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(29,1): message : Причина: невозможно преобразовать "std::shared_ptr" в "std::shared_ptr<_Ty>"
+C:\Documents\GitHub\Gems\Gems\Gems\GameLoop.h(29,9): message : Для преобразования требуется второй оператор пользовательского преобразования или конструктор
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\memory(1172,10): message : см. объявление "std::shared_ptr<_Ty>::reset"
+  GameLoopStart.cpp
+  Main.cpp
+  Создание кода...
