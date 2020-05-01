@@ -1,4 +1,7 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include "Field.h"
+#include "Bonuses.h"
 
 class GameLoop : public Menu {
 private:
