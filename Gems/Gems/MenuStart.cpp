@@ -7,6 +7,8 @@ void Menu::Start() {
 
     StartupMessage();
 
+    GameLoop gameLoop;
+
     while (true) {
 
         InputMessage();
@@ -21,8 +23,7 @@ void Menu::Start() {
             break;
 
         case cmPlay:
-            GameLoop GameLoop();
-            GameLoop.Start();
+            gameLoop.Start();
             break;
 
         case cmSetup:

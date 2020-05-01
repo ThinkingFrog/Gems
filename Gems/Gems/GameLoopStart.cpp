@@ -1,14 +1,11 @@
 #include <SFML/Graphics.hpp>
-#include <memory>
-#include <algorithm>
-#include "Menu.h"
-#include "Field.h"
-#include "Main.h"
-#include "Textures.h"
-#include "Bonuses.h"
 #include "GameLoop.h"
 
 void GameLoop::Start() {
+
+    window = std::make_shared<sf::RenderWindow>(sf::VideoMode(userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
+    window->setFramerateLimit(FRAME_RATE);
+    field = std::make_shared<Field>((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight);
 
     while (window->isOpen()) {
 
@@ -40,4 +37,7 @@ void GameLoop::Start() {
 
         window->display();
     }
+
+    window.reset();
+    field.reset();
 }

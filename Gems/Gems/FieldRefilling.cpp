@@ -1,6 +1,6 @@
 #include "Field.h"
 
-bool Field::FieldDrop(void) {
+bool Field::FieldDrop() {
     bool dropped = false;
     for (unsigned j = 0; j < gemsInColumn - 1; j++)
         for (unsigned i = 0; i < gemsInRow; i++)
@@ -12,7 +12,7 @@ bool Field::FieldDrop(void) {
     return dropped;
 }
 
-void Field::FieldRefill(void) {
+void Field::FieldRefill() {
     for (unsigned j = 0; j < gemsInColumn; j++)
         for (unsigned i = 0; i < gemsInRow; i++)
             if (gemsMatrix[j][i].IsEmpty())

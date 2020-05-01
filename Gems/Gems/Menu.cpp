@@ -6,14 +6,7 @@
 Menu::Menu() {
     fieldWidth = 10, fieldHeight = 10;
     userResolutionWidth = 800, userResolutionHeight = 600;
-    
     language = "en";
-    do {
-        if (language != "en" && language != "ru")
-            std::cout << "Wrong language typed" << std::endl;
-        std::cout << "Choose language (ru/en): ";
-        std::cin >> language;
-    } while (language != "en" && language != "ru");
 }
 
 language_code Menu::LocaleType(std::string language) {
@@ -64,6 +57,14 @@ void Menu::Setup() {
 }
 
 void Menu::StartupMessage() {
+
+    do {
+        if (language != "en" && language != "ru")
+            std::cout << "Wrong language typed" << std::endl;
+        std::cout << "Choose language (ru/en): ";
+        std::cin >> language;
+    } while (language != "en" && language != "ru");
+
     switch (LocaleType(language)) {
 
     case lEn:

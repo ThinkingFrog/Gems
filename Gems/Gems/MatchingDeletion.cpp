@@ -4,7 +4,7 @@
 #include "Main.h"
 
 //Major function that runs all deletion of 3+ matching gems
-bool Field::CheckFieldForMatching(void) {
+bool Field::CheckFieldForMatching() {
     matching.clear();
     bool found = false;
 

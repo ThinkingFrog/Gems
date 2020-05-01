@@ -15,9 +15,6 @@ GameLoop::GameLoop() {
     deleted = false;
     bonusTriggered = false;
     hasFocus = true;
-    window = std::make_shared<sf::RenderWindow>((userResolutionWidth, userResolutionHeight), "Gems", sf::Style::Close);
-    window->setFramerateLimit(FRAME_RATE);
-    field = std::make_shared<Field>((float)userResolutionWidth, (float)userResolutionHeight, fieldWidth, fieldHeight);
 }
 
 void GameLoop::CheckEvents() {
