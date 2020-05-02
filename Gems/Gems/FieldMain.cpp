@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include "Field.h"
-#include "Font.h"
 
 Field::Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned gemsInColumn) {
     width = windowWidth;
@@ -8,7 +7,6 @@ Field::Field(float windowWidth, float windowHeight, unsigned gemsInRow, unsigned
     this->gemsInRow = gemsInRow;
     this->gemsInColumn = gemsInColumn;
     GenerateField();
-    InitFont();
     texMng = std::make_shared<TextureManager>();
 }
 

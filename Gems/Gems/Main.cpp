@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Main.h"
 #include "Menu.h"
-#include "Font.h"
 
 int main(void) {
 

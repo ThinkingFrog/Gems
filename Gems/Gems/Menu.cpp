@@ -4,8 +4,8 @@
 #include "Main.h"
 
 Menu::Menu() {
-    fieldWidth = 10, fieldHeight = 10;
-    userResolutionWidth = 800, userResolutionHeight = 600;
+    fieldWidth = 8, fieldHeight = 8;
+    userResolutionWidth = 1280, userResolutionHeight = 720;
     language = "en";
 }
 
@@ -35,22 +35,22 @@ command_code Menu::CommandType(std::string command) {
 void Menu::Setup() {
     switch (LocaleType(language)) {
     case lEn:
-        std::cout << "Input window resolution (by default 800 600): ";
+        std::cout << "Input window resolution (by default 1280 720): ";
         std::cin >> userResolutionWidth >> userResolutionHeight;
 
         do {
             if (fieldWidth <= BONUS_SPAWN_RADIUS || fieldHeight <= BONUS_SPAWN_RADIUS)
                 std::cout << "Field too small, try bigger values";
-            std::cout << "Input field size (by default 10 10): ";
+            std::cout << "Input field size (by default 8 8): ";
             std::cin >> fieldWidth >> fieldHeight;
         } while (fieldWidth <= BONUS_SPAWN_RADIUS || fieldHeight <= BONUS_SPAWN_RADIUS);
         break;
 
     case lRu:
-        std::cout << "Введите разрешение окна (по умолчанию 800 600): ";
+        std::cout << "Введите разрешение окна (по умолчанию 1280 720): ";
         std::cin >> userResolutionWidth >> userResolutionHeight;
 
-        std::cout << "Введите размеры поля (по умолчанию 10 10): ";
+        std::cout << "Введите размеры поля (по умолчанию 8 8): ";
         std::cin >> fieldWidth >> fieldHeight;
         break;
     }

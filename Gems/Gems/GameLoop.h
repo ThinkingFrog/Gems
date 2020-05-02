@@ -13,7 +13,7 @@
 *
 *Interface methods must not be edited, only inner modules if needed
 */
-class GameLoop : public Menu {
+class GameLoop : private Menu {
 private:
     bool secondClick; /**Tracks if a gem is already selected and second click will be swapping or cancelling*/
     bool dropped;   /**Tracks if any gem was dropped by last FieldDrop() fucntion call*/

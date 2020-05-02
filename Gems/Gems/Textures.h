@@ -21,11 +21,14 @@ private:
     /**Map dictionary used to initialize textures by filename*/
     std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
         {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"}, {clBomb, "Bomb"}, {clPainter, "Painter"} };
+
 public:
     /**
     *TextureManager class constructor
     *
     *Initializes texturesSet map with textures using colorsSet
+    *
+    *Also initializes font
     */
     TextureManager();
 
@@ -54,4 +57,9 @@ public:
     *Returns false if even one texture couldn't be loaded and disables all textures in game
     */
     bool TexturesSetIsDamaged();
+
+    /**
+    *Font object used in bonus trigger message
+    */
+    sf::Font font;
 };

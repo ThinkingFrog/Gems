@@ -152,7 +152,6 @@
   <ItemGroup>
     <ClCompile Include="Bonuses.cpp" />
     <ClCompile Include="FieldRefilling.cpp" />
-    <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameLoopModules.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuStart.cpp" />
@@ -167,7 +166,6 @@
   <ItemGroup>
     <ClInclude Include="Bonuses.h" />
     <ClInclude Include="Field.h" />
-    <ClInclude Include="Font.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Gem.h" />
     <ClInclude Include="Main.h" />

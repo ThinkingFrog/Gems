@@ -42,6 +42,10 @@ TextureManager::TextureManager() {
         texture.setSmooth(true);
         texturesSet[it->first] = texture;
     }
+
+    std::string fontName = "default_font";
+
+    font.loadFromFile(localPath + fontName + ".ttf");
 }
 
 sf::Texture* TextureManager::GetTextureByColor(sf::Color color) {

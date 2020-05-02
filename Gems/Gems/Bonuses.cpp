@@ -3,7 +3,6 @@
 #include "Bonuses.h"
 #include "Main.h"
 #include "Field.h"
-#include "Font.h"
 
 void Bonus::SetPosition(unsigned xnew, unsigned ynew) {
     x = xnew;
@@ -37,7 +36,7 @@ void Bonus::ShowTriggerText(std::shared_ptr <sf::RenderWindow> window, std::shar
 
     float width = (float)window->getSize().x / field->GetGemsInRow(), height = (float)window->getSize().y / field->GetGemsInColumn();
 
-    text.setFont(font);
+    text.setFont(field->texMng->font);
     text.setString(triggerMessage);
     text.setCharacterSize((unsigned)(width + height) / 10);
     text.setFillColor(triggerColor);
