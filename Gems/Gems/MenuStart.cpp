@@ -23,7 +23,7 @@ void Menu::Start() {
             break;
 
         case cmPlay:
-            gameLoop.Start();
+            gameLoop.Start(*this);
             break;
 
         case cmSetup:

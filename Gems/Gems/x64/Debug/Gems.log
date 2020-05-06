@@ -1,13 +1,2 @@
-﻿  Bonuses.cpp
-  FieldMain.cpp
-  FieldRefilling.cpp
-  GameLoopModules.cpp
-  GameLoopStart.cpp
-  Gem.cpp
-  MatchingDeletion.cpp
-  MenuStart.cpp
-  SwapControls.cpp
-  Textures.cpp
-  Создание кода...
-C:\Documents\GitHub\Gems\Gems\Gems\Textures.cpp(25): warning C4715: ColorType: значение возвращается не при всех путях выполнения
-  Gems.vcxproj -> C:\Documents\GitHub\Gems\Gems\x64\Debug\Gems.exe
+﻿  GameLoopModules.cpp
+  Gems.vcxproj -> C:\myfiles\#GitHub_Repositories\Gems\Gems\x64\Debug\Gems.exe

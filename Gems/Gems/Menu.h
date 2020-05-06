@@ -20,11 +20,11 @@ enum command_code {
 };
 
 class Menu {
-protected:
+private:
     std::string language;   /**Menu text language*/
     unsigned fieldWidth, fieldHeight;   /**Field size in gems*/
     unsigned userResolutionWidth, userResolutionHeight;   /**Window resolution*/
-private:
+
     /**
     *Return type of locale for given string
     *
@@ -79,4 +79,8 @@ public:
     Menu();
     void Start();
     ~Menu() {}
+    unsigned GetFieldWidth();
+    unsigned GetFieldHeight();
+    unsigned GetUserResolutionWidth();
+    unsigned GetUserResolutionHeight();
 };

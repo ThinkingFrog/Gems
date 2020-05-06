@@ -9,7 +9,7 @@
 *
 *Loads all textures on initialization through prewritten colorsSet map. Can return pointer to texture by color or directly by color_code and boolean if all textures could be loaded or not
 *
-*In order to upload new texture you should: 
+*In order to upload new texture you should:
 *1)Create new color_code value in Main.h
 *2)(optionally) Associate it with color in ColorType func
 *3)Add pair of new color_code and texture name in colorsSet

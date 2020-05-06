@@ -34,16 +34,19 @@ bool Gem::IsEmpty() {
 
 //function returns an SFML drawable shape to be drawn via window.draw()
 void Gem::DrawGem(std::shared_ptr <sf::RenderWindow> window, std::shared_ptr<TextureManager> texMng, float x, float y) {
-    
+
+    //average of width and height multiplied by 0.075 which is an optimal number found by experementing with outline sizes
+    float outlineSize = (float)(-(width + height) / 2 * 0.075);
+
     bool applyTex = !texMng->TexturesSetIsDamaged();
 
-    sf::RectangleShape shape(sf::Vector2f(width, height));   
+    sf::RectangleShape shape(sf::Vector2f(width, height));
     shape.setPosition(x, y);
-    shape.setOutlineThickness((float)(-(width + height) / 2 * 0.075));
+    shape.setOutlineThickness(outlineSize);
     shape.setOutlineColor(outline);
 
     if (applyTex) {
-        sf::Texture *texture = texMng->GetTextureByColor(color);
+        sf::Texture* texture = texMng->GetTextureByColor(color);
         shape.setTexture(texture);
     }
     else

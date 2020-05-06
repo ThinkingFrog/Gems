@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include "Field.h"
-#include "Bonuses.h"
+#include "Bonus.h"
 #include "Main.h"
 
 //Major function that runs all deletion of 3+ matching gems

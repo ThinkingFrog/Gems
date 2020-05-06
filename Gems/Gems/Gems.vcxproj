@@ -150,11 +150,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bonuses.cpp" />
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="FieldRefilling.cpp" />
     <ClCompile Include="GameLoopModules.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuStart.cpp" />
+    <ClCompile Include="Painter.cpp" />
     <ClCompile Include="SwapControls.cpp" />
     <ClCompile Include="FieldMain.cpp" />
     <ClCompile Include="GameLoopStart.cpp" />
@@ -164,12 +166,14 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bonuses.h" />
+    <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Bonus.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Gem.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Painter.h" />
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
