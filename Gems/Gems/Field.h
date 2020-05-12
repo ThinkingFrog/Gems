@@ -15,7 +15,7 @@
 class Field {
 private:
     std::vector <std::vector <Gem>> gemsMatrix; /**Matrix of all gem objects on the screen*/
-    std::array <sf::Color, 6> colorsSpectre = { sf::Color::Green, sf::Color::Blue, sf::Color::Red, sf::Color::Yellow, sf::Color::Cyan, sf::Color::Magenta };    /**Array of all possible colors*/
+    const std::array <sf::Color, 6> colorsSpectre = { sf::Color::Green, sf::Color::Blue, sf::Color::Red, sf::Color::Yellow, sf::Color::Cyan, sf::Color::Magenta };    /**Array of all possible colors*/
     float width, height; /**Size of field taken from current window's size*/
     unsigned gemsInRow, gemsInColumn;   /**Amount of gems on the playfield*/
     std::vector <std::array <unsigned, 2>> matching; /**Vector of matching gems, refreshed each time for a new combination*/

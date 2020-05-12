@@ -19,7 +19,7 @@ private:
     std::map <color_code, sf::Texture> texturesSet; /**Map dictionary containing preloaded textures associated with [color_code]s*/
 
     /**Map dictionary used to initialize textures by filename*/
-    std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
+    const std::map <color_code, std::string> colorsSet = { {clGreen, "Green"}, {clBlue, "Blue"}, {clRed, "Red"}, {clYellow, "Yellow"},
         {clCyan, "Cyan"}, {clMagenta, "Magenta"}, {clBlack, "Black"}, {clBomb, "Bomb"}, {clPainter, "Painter"} };
 
 public:

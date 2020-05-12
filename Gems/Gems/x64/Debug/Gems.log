@@ -1,2 +1,13 @@
-﻿  GameLoopModules.cpp
+﻿  Bomb.cpp
+  Bonus.cpp
+  FieldMain.cpp
+  FieldRefilling.cpp
+  GameLoopModules.cpp
+  GameLoopStart.cpp
+  Gem.cpp
+  MatchingDeletion.cpp
+  MenuStart.cpp
+  Painter.cpp
+  SwapControls.cpp
+  Создание кода...
   Gems.vcxproj -> C:\myfiles\#GitHub_Repositories\Gems\Gems\x64\Debug\Gems.exe
