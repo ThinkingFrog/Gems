@@ -30,7 +30,7 @@ public:
     /**
     *Default destuctor
     */
-    ~Bonus() {}
+    virtual ~Bonus() {}
 
     /**
     *Returns type of bonus as color_code
