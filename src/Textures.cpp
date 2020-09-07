@@ -26,7 +26,7 @@ color_code ColorType(sf::Color color) {
 
 TextureManager::TextureManager() {
 
-    std::string localPath = "../../Textures/";
+    std::string localPath = "Textures/";
 
     std::fstream file;
     for (auto it = colorsSet.begin(); it != colorsSet.end(); ++it) {
