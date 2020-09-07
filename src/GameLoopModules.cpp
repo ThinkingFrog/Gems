@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <algorithm>
+#include <cmath>
 #include "Menu.h"
 #include "Field.h"
 #include "Main.h"

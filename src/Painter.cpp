@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Painter.h"
 
 Painter::Painter() {

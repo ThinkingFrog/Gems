@@ -1,5 +1,6 @@
 #pragma once
 #include "Bonus.h"
+#include <memory>
 
 /**
 *Bomb bonus class derived from abstract Bonus class
