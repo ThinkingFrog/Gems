@@ -5,7 +5,7 @@
 
 Menu::Menu() {
     fieldWidth = 8, fieldHeight = 8;
-    userResolutionWidth = 1280, userResolutionHeight = 720;
+    userResolutionWidth = 800, userResolutionHeight = 600;
     language = "en";
 }
 

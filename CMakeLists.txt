@@ -6,6 +6,7 @@ include_directories(include)
 file(GLOB SRC src/*cpp)
 
 if (WIN32)
+    set(SFML_STATIC_LIBRARIES TRUE)
     set(SFML_DIR SFML/lib/cmake/SFML)
 endif()
 
